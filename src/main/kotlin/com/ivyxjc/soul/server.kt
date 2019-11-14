@@ -12,6 +12,7 @@ import okhttp3.Request
 import org.apache.commons.io.IOUtils
 import org.apache.commons.lang3.StringUtils
 import org.slf4j.LoggerFactory
+import java.nio.charset.Charset
 import kotlin.random.Random
 
 
@@ -29,7 +30,9 @@ internal fun loadSoul(): List<String> {
 
 
 fun main() {
+    System.setProperty("file.encoding", "UTF-8")
     val log = LoggerFactory.getLogger(Sample::class.java)
+    log.info("default charset: {}", Charset.defaultCharset())
     val soulList = loadSoul()
     val soulSize = soulList.size
     if (soulList.isEmpty()) {
